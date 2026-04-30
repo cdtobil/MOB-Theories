@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Management Theories — Study Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0e0f13;
+    --surface: #15171d;
+    --border: #2a2d38;
+    --accent: #e8c547;
+    --accent2: #5b8dee;
+    --accent3: #e85b8d;
+    --text: #e8e9ed;
+    --muted: #7a7f94;
+    --card: #1a1d27;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'IBM Plex Sans', sans-serif;
+    min-height: 100vh;
+    padding: 0 0 80px;
+  }
+
+  /* HEADER */
+  header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 48px 40px 36px;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 280px; height: 280px;
+    background: radial-gradient(circle, rgba(232,197,71,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  header::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: 20%;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(91,141,238,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .header-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 900;
+    line-height: 1.1;
+    color: var(--text);
+  }
+
+  h1 span {
+    color: var(--accent);
+  }
+
+  .subtitle {
+    margin-top: 14px;
+    font-size: 14px;
+    color: var(--muted);
+    font-weight: 300;
+    max-width: 520px;
+    line-height: 1.6;
+  }
+
+  .count-badge {
+    display: inline-block;
+    margin-top: 20px;
+    background: rgba(232,197,71,0.12);
+    border: 1px solid rgba(232,197,71,0.3);
+    color: var(--accent);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    padding: 5px 14px;
+    border-radius: 2px;
+    letter-spacing: 1px;
+  }
+
+  /* LAYOUT */
+  main {
+    max-width: 920px;
+    margin: 48px auto 0;
+    padding: 0 24px;
+  }
+
+  /* CARDS */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    margin-bottom: 24px;
+    overflow: hidden;
+    transition: border-color 0.2s, transform 0.2s;
+    animation: fadeUp 0.5s both;
+  }
+
+  .card:hover {
+    border-color: rgba(232,197,71,0.35);
+    transform: translateY(-2px);
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .card:nth-child(1)  { animation-delay: 0.05s; }
+  .card:nth-child(2)  { animation-delay: 0.10s; }
+  .card:nth-child(3)  { animation-delay: 0.15s; }
+  .card:nth-child(4)  { animation-delay: 0.20s; }
+  .card:nth-child(5)  { animation-delay: 0.25s; }
+  .card:nth-child(6)  { animation-delay: 0.30s; }
+  .card:nth-child(7)  { animation-delay: 0.35s; }
+  .card:nth-child(8)  { animation-delay: 0.40s; }
+  .card:nth-child(9)  { animation-delay: 0.45s; }
+  .card:nth-child(10) { animation-delay: 0.50s; }
+
+  .card-top {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+  }
+
+  .card-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: var(--accent);
+    opacity: 0.18;
+    min-width: 68px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 1px solid var(--border);
+    padding: 24px 0;
+    flex-shrink: 0;
+  }
+
+  .card-question {
+    padding: 22px 24px;
+    flex: 1;
+  }
+
+  .company-tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent2);
+    margin-bottom: 8px;
+  }
+
+  .question-text {
+    font-size: 14.5px;
+    line-height: 1.7;
+    color: #c8cad4;
+    font-weight: 300;
+  }
+
+  /* TOGGLE BUTTON */
+  .toggle-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0 24px 18px;
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    color: var(--muted);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 7px 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+    width: fit-content;
+  }
+  .toggle-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+  .toggle-btn.revealed {
+    border-color: rgba(232,197,71,0.4);
+    color: var(--accent);
+    background: rgba(232,197,71,0.06);
+  }
+  .toggle-btn svg {
+    width: 13px; height: 13px;
+    transition: transform 0.3s;
+    flex-shrink: 0;
+  }
+  .toggle-btn.revealed svg {
+    transform: rotate(180deg);
+  }
+
+  /* ANSWER PANEL */
+  .card-answer {
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: stretch;
+    background: rgba(255,255,255,0.02);
+    overflow: hidden;
+    max-height: 0;
+    border-top-width: 0;
+    transition: max-height 0.4s ease, border-top-width 0.4s ease;
+  }
+  .card-answer.visible {
+    max-height: 300px;
+    border-top-width: 1px;
+  }
+
+  .answer-stripe {
+    width: 4px;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+
+  .answer-inner {
+    padding: 18px 24px;
+    flex: 1;
+  }
+
+  .theory-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+
+  .theory-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+
+  .explanation {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.65;
+    font-weight: 300;
+  }
+
+  /* THEORY LEGEND */
+  .legend {
+    margin-top: 56px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background: var(--card);
+    overflow: hidden;
+  }
+
+  .legend-header {
+    padding: 18px 24px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .legend-title {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .legend-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 0;
+  }
+
+  .legend-item {
+    padding: 14px 20px;
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .legend-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    margin-top: 5px;
+    flex-shrink: 0;
+  }
+
+  .legend-text {
+    font-size: 12.5px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  .legend-text strong {
+    color: var(--text);
+    font-weight: 500;
+    display: block;
+    font-size: 12px;
+    margin-bottom: 2px;
+  }
+
+  /* different accent colors per answer stripe */
+  .card:nth-child(3n+1) .answer-stripe  { background: var(--accent); }
+  .card:nth-child(3n+2) .answer-stripe  { background: var(--accent2); }
+  .card:nth-child(3n)   .answer-stripe  { background: var(--accent3); }
+
+  .card:nth-child(3n+1) .theory-name   { color: var(--accent); }
+  .card:nth-child(3n+2) .theory-name   { color: var(--accent2); }
+  .card:nth-child(3n)   .theory-name   { color: var(--accent3); }
+
+  footer {
+    margin-top: 60px;
+    text-align: center;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: #3a3e50;
+    letter-spacing: 1.5px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-label">Organisational Behaviour</div>
+  <h1>Management <span>Theories</span><br>Applied</h1>
+  <p class="subtitle">Scenario-based questions identifying motivational and management theories in real Ghanaian workplace contexts.</p>
+  <div class="count-badge">10 Questions · 10 Theories</div>
+</header>
+
+<main>
+
+  <!-- Q1 -->
+  <div class="card">
+    <div class="card-top">
+      <div class="card-number">01</div>
+      <div class="card-question">
+        <div class="company-tag">BOST Manufacturing</div>
+        <p class="question-text">Employees who meet their monthly targets are publicly praised during meetings and given performance bonuses. Workers who consistently underperform are excluded from team incentives and may be reassigned to less desirable roles.</p>
+      </div>
+    </div>
+    <button class="toggle-btn" onclick="toggleAnswer(this)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+      View Answer
+    </button>
+    <div class="card-answer">
+      <div class="answer-stripe"></div>
+      <div class="answer-inner">
+        <div class="theory-label">Theory Identified</div>
+        <div class="theory-name">Reinforcement Theory</div>
+        <p class="explanation">Employees are rewarded (bonuses, praise) for good performance and punished (exclusion, reassignment) for poor performance — a classic application of positive and negative reinforcement.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Q2 -->
+  <div class="card">
+    <div class="card-top">
+      <div class="card-number">02</div>
+      <div class="card-question">
+        <div class="company-tag">Adom Tech</div>
+        <p class="question-text">Management believes employees dislike work and must be closely supervised. Supervisors monitor staff strictly, enforce rules rigidly, and rarely delegate decision-making authority.</p>
+      </div>
+    </div>
+    <button class="toggle-btn" onclick="toggleAnswer(this)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+      View Answer
+    </button>
+    <div class="card-answer">
+      <div class="answer-stripe"></div>
+      <div class="answer-inner">
+        <div class="theory-label">Theory Identified</div>
+        <div class="theory-name">Theory X</div>
+        <p class="explanation">Management assumes employees are inherently lazy and dislike work, and therefore require strict supervision, control, and little autonomy — the defining characteristics of McGregor's Theory X.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Q3 -->
+  <div class="card">
+    <div class="card-top">
+      <div class="card-number">03</div>
+      <div class="card-question">
+        <div class="company-tag">GoldFields Ghana</div>
+        <p class="question-text">Employees are motivated because they believe that putting in extra effort will lead to high performance, which will then result in promotions and salary increases.</p>
+      </div>
+    </div>
+    <button class="toggle-btn" onclick="toggleAnswer(this)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+      View Answer
+    </button>
+    <div class="card-answer">
+      <div class="answer-stripe"></div>
+      <div class="answer-inner">
+        <div class="theory-label">Theory Identified</div>
+        <div class="theory-name">Expectancy Theory</div>
+        <p class="explanation">Employees are motivated because they believe effort leads to performance, and performance leads to valued rewards — the core Effort → Performance → Reward chain of Vroom's Expectancy Theory.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Q4 -->
+  <div class="card">
+    <div class="card-top">
+      <div class="card-number">04</div>
+      <div class="card-question">
+        <div class="company-tag">Zenith Bank</div>
+        <p class="question-text">Management ensures employees have good salaries, job security, and safe working conditions. However, they notice that even after improving these, employees are still not highly motivated to go above and beyond.</p>
+      </div>
+    </div>
+    <button class="toggle-btn" onclick="toggleAnswer(this)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+      View Answer
+    </button>
+    <div class="card-answer">
+      <div class="answer-stripe"></div>
+      <div class="answer-inner">
+        <div class="theory-label">Theory Identified</div>
+        <div class="theory-name">Two-Factor Theory</div>
+        <p class="explanation">Hygiene factors (salary, safety, job security) prevent dissatisfaction but do not create strong motivation on their own. True motivation requires motivators such as recognition, responsibility, and growth — the essence of Herzberg's Two-Factor Theory.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Q5 -->
+  <div class="card">
+    <div class="card-top">
+      <div class="card-number">05</div>
+      <div class="card-question">
+        <div class="company-tag">Kasapreko Company Ltd</div>
+        <p class="question-text">Workers feel dissatisfied because they believe their pay is lower than colleagues in similar roles at competing firms, despite performing at the same level.</p>
+      </div>
+    </div>
+    <button class="toggle-btn" onclick="toggleAnswer(this)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+      View Answer
+    </button>
+    <div class="card-answer">
+      <div class="answer-stripe"></div>
+      <div class="answer-inner">
+        <div class="theory-label">Theory Identified</div>
+        <div class="theory-name">Equity Theory</div>
+        <p class="explanation">Employees compare their inputs and outcomes with those of others. When they perceive their pay as unfairly lower for equivalent performance, dissatisfaction results — the central premise of Adams' Equity Theory.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Q6 -->
+  <div class="card">
+    <div class="card-top">
+      <div class="card-number">06</div>
+      <div class="card-question">
+        <div class="company-tag">MTN Ghana</div>
+        <p class="question-text">Employees are grouped into teams where collaboration and social interaction are encouraged. Management notices that workers perform better when they feel a strong sense of belonging within their teams.</p>
+      </div>
+    </div>
+    <button class="toggle-btn" onclick="toggleAnswer(this)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+      View Answer
+    </button>
+    <div class="card-answer">
+      <div class="answer-stripe"></div>
+      <div class="answer-inner">
+        <div class="theory-label">Theory Identified</div>
+        <div class="theory-name">Human Relations Theory</div>
+        <p class="explanation">The theory emphasises social needs, teamwork, and a sense of belonging as key motivators. Performance improves when employees feel connected and valued within their groups — rooted in Mayo's Hawthorne studies.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Q7 -->
+  <div class="card">
+    <div class="card-top">
+      <div class="card-number">07</div>
+      <div class="card-question">
+        <div class="company-tag">Accra Startup</div>
+        <p class="question-text">Management allows employees to set their own goals, take initiative, and develop creative solutions. Workers feel fulfilled because they are growing and reaching their full potential.</p>
+      </div>
+    </div>
+    <button class="toggle-btn" onclick="toggleAnswer(this)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+      View Answer
+    </button>
+    <div class="card-answer">
+      <div class="answer-stripe"></div>
+      <div class="answer-inner">
+        <div class="theory-label">Theory Identified</div>
+        <div class="theory-name">Maslow's Hierarchy of Needs</div>
+        <p class="explanation">Employees are motivated by self-actualisation — the highest level of Maslow's pyramid — which involves growth, creativity, autonomy, and reaching one's full potential.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Q8 -->
+  <div class="card">
+    <div class="card-top">
+      <div class="card-number">08</div>
+      <div class="card-question">
+        <div class="company-tag">Retail Company</div>
+        <p class="question-text">Employees receive a fixed salary regardless of performance. Over time, productivity drops because workers feel there is no link between effort and reward.</p>
+      </div>
+    </div>
+    <button class="toggle-btn" onclick="toggleAnswer(this)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+      View Answer
+    </button>
+    <div class="card-answer">
+      <div class="answer-stripe"></div>
+      <div class="answer-inner">
+        <div class="theory-label">Theory Identified</div>
+        <div class="theory-name">Expectancy Theory</div>
+        <p class="explanation">When there is no perceived link between effort and reward, the expectancy chain breaks down and motivation collapses — a failure scenario that directly illustrates Vroom's Expectancy Theory.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Q9 -->
+  <div class="card">
+    <div class="card-top">
+      <div class="card-number">09</div>
+      <div class="card-question">
+        <div class="company-tag">Coca-Cola Bottling Company</div>
+        <p class="question-text">A manager changes her leadership style depending on the situation — being strict when deadlines are tight and more supportive when employees are learning new tasks.</p>
+      </div>
+    </div>
+    <button class="toggle-btn" onclick="toggleAnswer(this)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+      View Answer
+    </button>
+    <div class="card-answer">
+      <div class="answer-stripe"></div>
+      <div class="answer-inner">
+        <div class="theory-label">Theory Identified</div>
+        <div class="theory-name">Contingency Theory</div>
+        <p class="explanation">There is no single best leadership style. The manager adapts her approach based on the demands of each situation — the core principle of Contingency (Situational) Leadership Theory.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Q10 -->
+  <div class="card">
+    <div class="card-top">
+      <div class="card-number">10</div>
+      <div class="card-question">
+        <div class="company-tag">Logistics Firm</div>
+        <p class="question-text">Employees are motivated primarily by financial rewards. Management introduces commissions and bonuses, leading to a significant increase in performance.</p>
+      </div>
+    </div>
+    <button class="toggle-btn" onclick="toggleAnswer(this)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+      View Answer
+    </button>
+    <div class="card-answer">
+      <div class="answer-stripe"></div>
+      <div class="answer-inner">
+        <div class="theory-label">Theory Identified</div>
+        <div class="theory-name">Reinforcement Theory</div>
+        <p class="explanation">Financial rewards (commissions, bonuses) act as positive reinforcers that strengthen desired employee behaviour, producing measurable improvements in performance — a direct application of Skinner's Reinforcement Theory.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- LEGEND -->
+  <div class="legend">
+    <div class="legend-header">
+      <div class="legend-title">Theory Reference Index</div>
+    </div>
+    <div class="legend-grid">
+      <div class="legend-item">
+        <div class="legend-dot"></div>
+        <div class="legend-text"><strong>Reinforcement Theory</strong>Skinner — reward & punishment shape behaviour</div>
+      </div>
+      <div class="legend-item">
+        <div class="legend-dot"></div>
+        <div class="legend-text"><strong>Theory X</strong>McGregor — employees dislike work, need control</div>
+      </div>
+      <div class="legend-item">
+        <div class="legend-dot"></div>
+        <div class="legend-text"><strong>Expectancy Theory</strong>Vroom — Effort → Performance → Reward</div>
+      </div>
+      <div class="legend-item">
+        <div class="legend-dot"></div>
+        <div class="legend-text"><strong>Two-Factor Theory</strong>Herzberg — hygiene vs. motivators</div>
+      </div>
+      <div class="legend-item">
+        <div class="legend-dot"></div>
+        <div class="legend-text"><strong>Equity Theory</strong>Adams — fairness through social comparison</div>
+      </div>
+      <div class="legend-item">
+        <div class="legend-dot"></div>
+        <div class="legend-text"><strong>Human Relations Theory</strong>Mayo — belonging and social needs</div>
+      </div>
+      <div class="legend-item">
+        <div class="legend-dot"></div>
+        <div class="legend-text"><strong>Maslow's Hierarchy</strong>5-level needs pyramid, self-actualisation at top</div>
+      </div>
+      <div class="legend-item">
+        <div class="legend-dot"></div>
+        <div class="legend-text"><strong>Contingency Theory</strong>No one best style — adapt to situation</div>
+      </div>
+    </div>
+  </div>
+
+  <footer>Organisational Behaviour · Management Theories Study Guide</footer>
+
+</main>
+<script>
+  function toggleAnswer(btn) {
+    const answer = btn.nextElementSibling;
+    const isOpen = answer.classList.contains('visible');
+    answer.classList.toggle('visible', !isOpen);
+    btn.classList.toggle('revealed', !isOpen);
+    btn.innerHTML = isOpen
+      ? `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> View Answer`
+      : `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg> Hide Answer`;
+  }
+</script>
+</body>
+</html>
