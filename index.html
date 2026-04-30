@@ -255,7 +255,26 @@
     font-size: 1.1rem;
     font-weight: 700;
     color: var(--accent);
-    margin-bottom: 8px;
+    margin-bottom: 4px;
+  }
+
+  .theory-developer {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: var(--accent2);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .theory-developer::before {
+    content: '';
+    display: inline-block;
+    width: 14px;
+    height: 1px;
+    background: var(--accent2);
+    opacity: 0.6;
   }
 
   .explanation {
@@ -376,6 +395,7 @@
       <div class="answer-inner">
         <div class="theory-label">Theory Identified</div>
         <div class="theory-name">Reinforcement Theory</div>
+        <div class="theory-developer">B.F. Skinner, 1938</div>
         <p class="explanation">Employees are rewarded (bonuses, praise) for good performance and punished (exclusion, reassignment) for poor performance — a classic application of positive and negative reinforcement.</p>
       </div>
     </div>
@@ -399,6 +419,7 @@
       <div class="answer-inner">
         <div class="theory-label">Theory Identified</div>
         <div class="theory-name">Theory X</div>
+        <div class="theory-developer">Douglas McGregor, 1960</div>
         <p class="explanation">Management assumes employees are inherently lazy and dislike work, and therefore require strict supervision, control, and little autonomy — the defining characteristics of McGregor's Theory X.</p>
       </div>
     </div>
@@ -422,6 +443,7 @@
       <div class="answer-inner">
         <div class="theory-label">Theory Identified</div>
         <div class="theory-name">Expectancy Theory</div>
+        <div class="theory-developer">Victor Vroom, 1964</div>
         <p class="explanation">Employees are motivated because they believe effort leads to performance, and performance leads to valued rewards — the core Effort → Performance → Reward chain of Vroom's Expectancy Theory.</p>
       </div>
     </div>
@@ -445,6 +467,7 @@
       <div class="answer-inner">
         <div class="theory-label">Theory Identified</div>
         <div class="theory-name">Two-Factor Theory</div>
+        <div class="theory-developer">Frederick Herzberg, 1959</div>
         <p class="explanation">Hygiene factors (salary, safety, job security) prevent dissatisfaction but do not create strong motivation on their own. True motivation requires motivators such as recognition, responsibility, and growth — the essence of Herzberg's Two-Factor Theory.</p>
       </div>
     </div>
@@ -468,6 +491,7 @@
       <div class="answer-inner">
         <div class="theory-label">Theory Identified</div>
         <div class="theory-name">Equity Theory</div>
+        <div class="theory-developer">John Stacey Adams, 1963</div>
         <p class="explanation">Employees compare their inputs and outcomes with those of others. When they perceive their pay as unfairly lower for equivalent performance, dissatisfaction results — the central premise of Adams' Equity Theory.</p>
       </div>
     </div>
@@ -491,6 +515,7 @@
       <div class="answer-inner">
         <div class="theory-label">Theory Identified</div>
         <div class="theory-name">Human Relations Theory</div>
+        <div class="theory-developer">Elton Mayo, 1930s</div>
         <p class="explanation">The theory emphasises social needs, teamwork, and a sense of belonging as key motivators. Performance improves when employees feel connected and valued within their groups — rooted in Mayo's Hawthorne studies.</p>
       </div>
     </div>
@@ -514,6 +539,7 @@
       <div class="answer-inner">
         <div class="theory-label">Theory Identified</div>
         <div class="theory-name">Maslow's Hierarchy of Needs</div>
+        <div class="theory-developer">Abraham Maslow, 1943</div>
         <p class="explanation">Employees are motivated by self-actualisation — the highest level of Maslow's pyramid — which involves growth, creativity, autonomy, and reaching one's full potential.</p>
       </div>
     </div>
@@ -537,6 +563,7 @@
       <div class="answer-inner">
         <div class="theory-label">Theory Identified</div>
         <div class="theory-name">Expectancy Theory</div>
+        <div class="theory-developer">Victor Vroom, 1964</div>
         <p class="explanation">When there is no perceived link between effort and reward, the expectancy chain breaks down and motivation collapses — a failure scenario that directly illustrates Vroom's Expectancy Theory.</p>
       </div>
     </div>
@@ -560,6 +587,7 @@
       <div class="answer-inner">
         <div class="theory-label">Theory Identified</div>
         <div class="theory-name">Contingency Theory</div>
+        <div class="theory-developer">Fred Fiedler, 1964</div>
         <p class="explanation">There is no single best leadership style. The manager adapts her approach based on the demands of each situation — the core principle of Contingency (Situational) Leadership Theory.</p>
       </div>
     </div>
@@ -583,6 +611,7 @@
       <div class="answer-inner">
         <div class="theory-label">Theory Identified</div>
         <div class="theory-name">Reinforcement Theory</div>
+        <div class="theory-developer">B.F. Skinner, 1938</div>
         <p class="explanation">Financial rewards (commissions, bonuses) act as positive reinforcers that strengthen desired employee behaviour, producing measurable improvements in performance — a direct application of Skinner's Reinforcement Theory.</p>
       </div>
     </div>
@@ -596,35 +625,35 @@
     <div class="legend-grid">
       <div class="legend-item">
         <div class="legend-dot"></div>
-        <div class="legend-text"><strong>Reinforcement Theory</strong>Skinner — reward & punishment shape behaviour</div>
+        <div class="legend-text"><strong>Reinforcement Theory</strong>B.F. Skinner — reward & punishment shape behaviour</div>
       </div>
       <div class="legend-item">
         <div class="legend-dot"></div>
-        <div class="legend-text"><strong>Theory X</strong>McGregor — employees dislike work, need control</div>
+        <div class="legend-text"><strong>Theory X</strong>Douglas McGregor — employees dislike work, need control</div>
       </div>
       <div class="legend-item">
         <div class="legend-dot"></div>
-        <div class="legend-text"><strong>Expectancy Theory</strong>Vroom — Effort → Performance → Reward</div>
+        <div class="legend-text"><strong>Expectancy Theory</strong>Victor Vroom — Effort → Performance → Reward</div>
       </div>
       <div class="legend-item">
         <div class="legend-dot"></div>
-        <div class="legend-text"><strong>Two-Factor Theory</strong>Herzberg — hygiene vs. motivators</div>
+        <div class="legend-text"><strong>Two-Factor Theory</strong>Frederick Herzberg — hygiene vs. motivators</div>
       </div>
       <div class="legend-item">
         <div class="legend-dot"></div>
-        <div class="legend-text"><strong>Equity Theory</strong>Adams — fairness through social comparison</div>
+        <div class="legend-text"><strong>Equity Theory</strong>John Stacey Adams — fairness through social comparison</div>
       </div>
       <div class="legend-item">
         <div class="legend-dot"></div>
-        <div class="legend-text"><strong>Human Relations Theory</strong>Mayo — belonging and social needs</div>
+        <div class="legend-text"><strong>Human Relations Theory</strong>Elton Mayo — belonging and social needs</div>
       </div>
       <div class="legend-item">
         <div class="legend-dot"></div>
-        <div class="legend-text"><strong>Maslow's Hierarchy</strong>5-level needs pyramid, self-actualisation at top</div>
+        <div class="legend-text"><strong>Maslow's Hierarchy</strong>Abraham Maslow — 5-level needs pyramid</div>
       </div>
       <div class="legend-item">
         <div class="legend-dot"></div>
-        <div class="legend-text"><strong>Contingency Theory</strong>No one best style — adapt to situation</div>
+        <div class="legend-text"><strong>Contingency Theory</strong>Fred Fiedler — adapt style to situation</div>
       </div>
     </div>
   </div>
